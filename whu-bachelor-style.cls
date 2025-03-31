@@ -11,7 +11,7 @@
 %% ----------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{whu-bachelor-style}[Wuhan University Thesis Template for Bachelor Degree]
+\ProvidesClass{WHUBachelor}[Wuhan University Thesis Template for Bachelor Degree]
 
 %%% ---- 载入Class ----- %%%
 \LoadClass[a4paper,openany,oneside]{book} % A4大小，book布局
@@ -199,19 +199,20 @@
 \def\cauthor#1{\def\@cauthor{#1}}\def\@cauthor{}      % 作者
 \def\cadvisor#1{\def\@cadvisor{#1}}\def\@cadvisor{}   % 老师
 \def\cdate#1{\def\@cdate{#1}}\def\@cdate{}            % 日期
+\def\cnumber#1{\def\@cnumber{#1}}\def\@cnumber{}      % 学号
 
 % 论文标题页
 \def\maketitlepage{
   \thispagestyle{empty}
   \begin{center}
-    {\heiti \zihao{5} \hfill 
-    \begin{minipage}[t]{4.5cm}
-      学号\ ：\uline{\hfill\hspace{3mm}\@stunum\hspace{3mm}\hfill} \\[2mm]
-      密级\ ：\uline{\hfill \hfill}
-    \end{minipage}}
-    \par \vspace*{6em}
-    {\songti \zihao{1} 武汉大学本科毕业论文}
-    \par \vspace{5em}
+    \begin{figure}
+        \vspace{3em}
+        \centering
+        \includegraphics[width=0.3\linewidth]{figures/whulogo.png}
+    \end{figure}
+    \par \vspace*{1em}
+    {\songti \zihao{1} 本\ 科\ 毕\ 业\ 论\ 文}
+    \par \vspace{4em}
     \begin{minipage}[c][6cm]{16cm}
         \setlength{\baselineskip}{32pt} 
         \centering {\heiti \zihao{2} \@ctitle}
@@ -219,12 +220,13 @@
     \par \vspace{4em}
     {\songti \zihao{-3}
       \begin{tabular}{cl}
-        \makebox[4cm][s]{院\ 系\ 名\ 称\ ：}   & \@cschool   \\[1ex]
-        \makebox[4cm][s]{专\ 业\ 名\ 称\ ：}                                 & \@cmajor    \\[1ex]
-        \makebox[4cm][s]{学\ 生\ 姓\ 名\ ：}                                 & \@cauthor   \\[1ex]
+        \makebox[4cm][s]{姓\ \ \ \ \ 名\ ：}                                 & \@cauthor   \\[1ex]
+        \makebox[4cm][s]{学\ \ \ \ \ 号\ ：}                                 & \@cnumber    \\[1ex]
+        \makebox[4cm][s]{专\ \ \ \ \ 业\ ：}                                 & \@cmajor    \\[1ex]
+        \makebox[4cm][s]{学\ \ \ \ \ 院\ ：}                                 & \@cschool   \\[1ex]
         \makebox[4cm][s]{指\ 导\ 教\ 师\ ：}                                 & \@cadvisor  \\[1ex]
       \end{tabular}}
-    \par \vspace{5em}
+    \par \vspace{4em}
     {\songti \zihao{-2} \@cdate}
   \end{center}
   \clearpage
@@ -238,7 +240,7 @@
   \par\vspace*{20pt}
   \setlength{\baselineskip}{23pt}
   {\zihao{4}
-  本人郑重声明：所呈交的论文，是本人在指导教师的指导下，严格按照学校和学院有关规定完成的。除文中已经标明引用的内容外，本论文不包含任何其他个人或集体已发表及撰写的研究成果。对本论文做出贡献的个人和集体，均已在文中以明确方式标明。本人承诺在论文工作过程中没有伪造数据等行为。若在本论文中有侵犯任何方面知识产权的行为，由本人承担相应的法律责任。
+  本人郑重声明：所呈交的论文（设计），是本人在指导教师的指导下，严格按照学校和学院有关规定完成的。除文中已经标明引用的内容外，本论文（设计）不包含任何其他个人或集体已发表及撰写的研究成果。对本论文（设计）做出贡献的个人和集体，均已在文中以明确方式标明。本人承诺在论文（设计）工作过程中没有伪造数据等行为。若在本论文（设计）中有侵犯任何方面知识产权的行为，由本人承担相应的法律责任。
   \vspace*{30pt}\newline
   作者签名: \underline{\hspace{2.5cm}}
   \hspace{0.6cm}指导教师签名: \underline{\hspace{2.5cm}}
@@ -249,7 +251,7 @@
   \par\vspace*{20pt}
   \setlength{\baselineskip}{23pt}
   {\zihao{4}
-  本人完全了解武汉大学有权保留并向有关部门或机构送交本论文的复印件和电子版，允许本论文被查阅和借阅。本人授权武汉大学将本论文的全部或部分内容编入有关数据进行检索和传播，可以采用影印、缩印或扫描等复制手段保存和汇编本论文。
+  本人完全了解武汉大学有权保留并向有关部门或机构送交本论文（设计）的复印件和电子版，允许本论文（设计）被查阅和借阅。本人授权武汉大学将本论文的全部或部分内容编入有关数据进行检索和传播，可以采用影印、缩印或扫描等复制手段保存和汇编本论文（设计）。
   \vspace*{30pt}\newline
   作者签名: \underline{\hspace{2.5cm}}
   \hspace{0.6cm}指导教师签名: \underline{\hspace{2.5cm}}
