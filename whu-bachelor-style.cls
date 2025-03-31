@@ -192,7 +192,6 @@
 
 %%% ---- 封面 ----- %%%
 \makeatletter
-\def\stunum#1{\def\@stunum{#1}}\def\@stunum{}         % 学号
 \def\ctitle#1{\def\@ctitle{#1}}\def\@ctitle{}         % 题目
 \def\cschool#1{\def\@cschool{#1}}\def\@cschool{}      % 院系
 \def\cmajor#1{\def\@cmajor{#1}}\def\@cmajor{}         % 专业
