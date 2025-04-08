@@ -10,30 +10,47 @@
 %% This project uses the MIT License, see LICENSE for more details.
 %% ----------------------------------------------------------------------
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{WHUBachelor}[Wuhan University Thesis Template for Bachelor Degree]
+% \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{whu-bachelor-style}[Wuhan University Thesis Template for Bachelor Degree]
 
 %%% ---- 载入Class ----- %%%
 \LoadClass[a4paper,openany,oneside]{book} % A4大小，book布局
-
-\RequirePackage[AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}[2017/08/08]
-\RequirePackage[zihao=-4,UTF8,heading=true]{ctex}[2016/12/27]
+\PassOptionsToPackage{quiet}{fontspec}
+\RequirePackage[AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\RequirePackage[zihao=-4,UTF8,heading=true]{ctex}
 \RequirePackage{xeCJKfntef}
 
 %%% ---- 定义页边距 ----- %%%
 \RequirePackage{geometry}
 \geometry{left=2.6cm,right=2.6cm,top=3cm,bottom=3cm,includefoot,xetex}
+\setlength{\headheight}{18.5pt}
 
 \RequirePackage{fancyhdr}             % 页眉页脚宏包
-\renewcommand{\headrulewidth}{0.4pt}  % 页眉线宽
+\renewcommand{\headrulewidth}{0.2pt}  % 页眉线宽
 \renewcommand{\footrulewidth}{0pt}    % 页脚线宽
 
 
-% 默认页面页眉页脚样式
+% 页眉线淡化
+\renewcommand{\headrule}{
+  \color{gray!90}
+  \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth
+}
+
+
+% 页眉页脚样式
 \fancypagestyle{plain}{
     \fancyhf{}
-    \fancyfoot[C]{\zihao{5}\thepage}  % 页码位于页脚居中
+    \fancyhead[C]{\vspace{4pt}\textcolor{gray!70}{\zihao{5}武汉大学本科毕业论文（设计）}}
+    \fancyfoot[C]{\zihao{5}\thepage}
 }
+
+
+% 含有页眉但无页码的样式
+\fancypagestyle{noPageNum}{
+    \fancyhf{} 
+    \fancyhead[C]{\vspace{4pt}\textcolor{gray!70}{\zihao{5}武汉大学本科毕业论文（设计）}}
+}
+
 \pagestyle{plain}
 
 %%% ---- 定义标题和段落样式 ----- %%%
@@ -76,8 +93,26 @@
 \renewcommand\cftsecafterpnum{\vskip3pt}
 \renewcommand\cftsubsecafterpnum{\vskip2pt}
 \setlength{\cftsecindent}{1.85em}
-\setlength{\cftsubsecindent}{1.85em}
-\setlength{\cftsubsubsecindent}{1.85em}
+\setlength{\cftsubsecindent}{3.7em}
+\setlength{\cftsubsubsecindent}{7.4em}
+
+% 生成目录
+\def\makecontents{
+    % ------- 目录部分 -------
+    \hypersetup{pdfborder={0 0 0}}    % 去掉目录红框
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+    \tableofcontents
+    
+    \cleardoublepage
+    \pagenumbering{arabic}            % 切换为阿拉伯数字
+    \setcounter{page}{1}
+
+    \renewcommand{\baselinestretch}{1}\normalsize
+    \baselineskip=23pt                % 正文行距为 23 磅
+    \hypersetup{pdfborder={0 0 1}}    % 恢复引用红框
+}
+
 
 %%% ---- 图表标题设置 ----- %%%
 \RequirePackage[labelsep=quad]{caption}     % 序号之后空一格写标题
@@ -121,9 +156,9 @@
 \RequirePackage[amsmath,thmmarks]{ntheorem}  % 定理
 \RequirePackage{graphicx, subcaption}
 \RequirePackage{listings}                    % 代码段
-% \RequirePackage{minted}                    % 代码高亮（需要 python 安装 pygments 库）
 \RequirePackage{algorithm2e, algorithmic}    % 算法代码
 \RequirePackage{tikz, pgfplots}              % 绘图
+\pgfplotsset{compat=1.8}
 \RequirePackage{fontspec, color, url, array}
 \RequirePackage{float}                       % 浮点
 \RequirePackage{enumitem}                    % 缩紧列表
@@ -167,7 +202,7 @@
 \RequirePackage[sort&compress]{natbib}
 \setcitestyle{numbers,square,comma}
 \ctexset{bibname={参考文献}}
-\bibliographystyle{data/gbt7714-2005-whu}  % 参考文献样式
+\bibliographystyle{unsrt}
 
 \RequirePackage{hyperref} % 引用
 \hypersetup{citecolor=magenta,linkcolor=black,urlcolor=blue} % 设置引用链接颜色
@@ -210,7 +245,7 @@
         \includegraphics[width=0.3\linewidth]{figures/whulogo.png}
     \end{figure}
     \par \vspace*{1em}
-    {\songti \zihao{1} 本\ 科\ 毕\ 业\ 论\ 文}
+    {\songti \zihao{1} 本科毕业论文（设计）}
     \par \vspace{4em}
     \begin{minipage}[c][6cm]{16cm}
         \setlength{\baselineskip}{32pt} 
@@ -235,7 +270,7 @@
 \def\makestatement{
   \thispagestyle{empty}
   % \vspace*{40pt}
-  \begin{center}{\ziju{0.5}\songti \zihao{2} \textbf{原创性声明}}\end{center}
+  \begin{center}{\ziju{0.5}\heiti \zihao{-2} 原创性声明}\end{center}
   \par\vspace*{20pt}
   \setlength{\baselineskip}{23pt}
   {\zihao{4}
@@ -246,7 +281,7 @@
   \hspace{0.6cm}日期: \underline{\hspace{2.5cm}}\hfill\par}
 
   \vspace*{140pt}
-  \begin{center}{\ziju{0.5}\songti \zihao{2} \textbf{版权使用授权书}}\end{center}
+  \begin{center}{\ziju{0.5}\heiti \zihao{-2} 版权使用授权书}\end{center}
   \par\vspace*{20pt}
   \setlength{\baselineskip}{23pt}
   {\zihao{4}
@@ -262,11 +297,9 @@
 \newenvironment{cnabstract}[1]{
 	\def \cnkeyword {#1}
 	\clearpage
-  \thispagestyle{empty}
-	% \addcontentsline{toc}{chapter}{摘要}
-  \begin{center} {\heiti \zihao{-2} 摘 \hspace{2em} 要} \end{center}
-  \baselineskip=23pt
-
+    \thispagestyle{noPageNum}
+    \begin{center} {\vspace*{0.5em}\heiti \zihao{-2} 摘 \hspace{2em} 要} \end{center}
+    \baselineskip=23pt
 }{
 	\vspace*{2em}
 	\par\noindent {\heiti\zihao{-4} 关键词：} \cnkeyword
@@ -275,31 +308,14 @@
 
 % 英文摘要
 \newenvironment{enabstract}[1]{
-	\def \enkeyword {#1}
-  \clearpage
-  \thispagestyle{empty}  
-  \begin{center} {\heiti \zihao{-2} \textbf{ABSTRACT}} \end{center}
-  \baselineskip=23pt
-
+    \def \enkeyword {#1}
+    \clearpage
+    \thispagestyle{noPageNum}
+    \begin{center} {\vspace*{0.5em}\heiti \zihao{-2} \textbf{ABSTRACT}} \end{center}
+    \baselineskip=23pt
 }{
 	\vspace*{2em}
-	\par\noindent {\bfseries\zihao{-4} Key words:} \enkeyword
+	\par\noindent {\bfseries\zihao{-4} Keywords:} \enkeyword
 	\clearpage
 }
 
-%%% ---- 目录 ----- %%%
-% 生成目录
-\newcommand{\contents}{
-  \hypersetup{pdfborder={0 0 0}}    % 去掉目录红框
-  \cleardoublepage
-  \pagenumbering{gobble}            % 去掉目录页码
-  \tableofcontents
-
-  \cleardoublepage
-  \pagenumbering{arabic}            % 重新计数页码
-  \setcounter{page}{1}
-
-  \renewcommand{\baselinestretch}{1}\normalsize
-  \baselineskip=23pt                % 正文行距为 23 磅
-  \hypersetup{pdfborder={0 0 1}}    % 恢复引用红框
-}

@@ -4,13 +4,15 @@
 
 ## 样例展示
 
-![pic1](.assets/pic1.jpg)
+![pic1](.assets/pic1.png)
 
-![pic2](.assets/pic2.jpg)
+![pic2](.assets/pic2.png)
 
-![pic3](.assets/pic3.jpg)
+![pic3](.assets/pic3.png)
 
-![pic4](.assets/pic4.jpg)
+![pic4](.assets/pic4.png)
+
+![pic5](.assets/pic5.png)
 
 
 完整样例请查看 demo.pdf。
