@@ -100,7 +100,7 @@
 \def\makecontents{
     % ------- 目录部分 -------
     \hypersetup{pdfborder={0 0 0}}    % 去掉目录红框
-    \pagenumbering{arabic}
+    \pagenumbering{Roman}
     \setcounter{page}{1}
     \tableofcontents
     
@@ -297,7 +297,7 @@
 \newenvironment{cnabstract}[1]{
 	\def \cnkeyword {#1}
 	\clearpage
-    \thispagestyle{noPageNum}
+    % \thispagestyle{noPageNum}
     \begin{center} {\vspace*{0.5em}\heiti \zihao{-2} 摘 \hspace{2em} 要} \end{center}
     \baselineskip=23pt
 }{
@@ -310,7 +310,7 @@
 \newenvironment{enabstract}[1]{
     \def \enkeyword {#1}
     \clearpage
-    \thispagestyle{noPageNum}
+    % \thispagestyle{noPageNum}
     \begin{center} {\vspace*{0.5em}\heiti \zihao{-2} \textbf{ABSTRACT}} \end{center}
     \baselineskip=23pt
 }{
