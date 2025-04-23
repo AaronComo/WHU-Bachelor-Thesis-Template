@@ -5,7 +5,7 @@
 %% Fing: v0.1, 2019/03/18
 %%
 %% Modified by AaronComo @ WHU
-%% AaronComo: v1.0, 2025/01/15
+%% AaronComo: v2.2, 2025/04/23
 %%
 %% This project uses the MIT License, see LICENSE for more details.
 %% ----------------------------------------------------------------------
@@ -116,10 +116,10 @@
 
 %%% ---- 图表标题设置 ----- %%%
 \RequirePackage[labelsep=quad]{caption}     % 序号之后空一格写标题
-% 设置表格标题字体为黑体, 设置图标题字体为宋体
-% \captionsetup[table]{textfont=bf}
-\renewcommand\figurename{\bf\songti\zihao{-4} 图}
-\renewcommand\tablename{\songti\bf\zihao{-4} 表}
+\captionsetup[table]{font={small},labelfont=bf,textfont=normalfont}
+\captionsetup[figure]{font={small},labelfont=bf,textfont=normalfont}
+\renewcommand\figurename{\bf\songti\zihao{5} 图}
+\renewcommand\tablename{\songti\bf\zihao{5} 表}
 
 % 使用tabularx创建占满宽度的表格
 \RequirePackage{tabularx, makecell}
@@ -247,21 +247,21 @@
     \par \vspace*{1em}
     {\songti \zihao{1} 本科毕业论文（设计）}
     \par \vspace{4em}
-    \begin{minipage}[c][6cm]{16cm}
+    \begin{minipage}[c][6cm]{\textwidth}
         \setlength{\baselineskip}{32pt} 
-        \centering {\heiti \zihao{2} \@ctitle}
+        \centering {\kaishu \zihao{1} \@ctitle}
     \end{minipage}
     \par \vspace{4em}
-    {\songti \zihao{-3}
-      \begin{tabular}{cl}
-        \makebox[4cm][s]{姓\ \ \ \ \ 名\ ：}                                 & \@cauthor   \\[1ex]
-        \makebox[4cm][s]{学\ \ \ \ \ 号\ ：}                                 & \@cnumber    \\[1ex]
-        \makebox[4cm][s]{专\ \ \ \ \ 业\ ：}                                 & \@cmajor    \\[1ex]
-        \makebox[4cm][s]{学\ \ \ \ \ 院\ ：}                                 & \@cschool   \\[1ex]
-        \makebox[4cm][s]{指\ 导\ 教\ 师\ ：}                                 & \@cadvisor  \\[1ex]
+    {\songti \zihao{4}
+      \begin{tabular}{cc}
+        \makebox[3.59cm][l]{姓\hspace{2em}名\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cauthor} \\[1ex]
+        \makebox[3.59cm][l]{学\hspace{2em}号\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cnumber}    \\[1ex]
+        \makebox[3.59cm][l]{专\hspace{2em}业\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cmajor}    \\[1ex]
+        \makebox[3.59cm][l]{学\hspace{2em}院\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cschool}   \\[1ex]
+        \makebox[3.59cm][l]{指导教师\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cadvisor}  \\[1ex]
       \end{tabular}}
-    \par \vspace{4em}
-    {\songti \zihao{-2} \@cdate}
+    \par \vfill
+    {\songti \zihao{4} \@cdate}
   \end{center}
   \clearpage
 }
@@ -275,21 +275,23 @@
   \setlength{\baselineskip}{23pt}
   {\zihao{4}
   本人郑重声明：所呈交的论文（设计），是本人在指导教师的指导下，严格按照学校和学院有关规定完成的。除文中已经标明引用的内容外，本论文（设计）不包含任何其他个人或集体已发表及撰写的研究成果。对本论文（设计）做出贡献的个人和集体，均已在文中以明确方式标明。本人承诺在论文（设计）工作过程中没有伪造数据等行为。若在本论文（设计）中有侵犯任何方面知识产权的行为，由本人承担相应的法律责任。
-  \vspace*{30pt}\newline
-  作者签名: \underline{\hspace{2.5cm}}
-  \hspace{0.6cm}指导教师签名: \underline{\hspace{2.5cm}}
-  \hspace{0.6cm}日期: \underline{\hspace{2.5cm}}\hfill\par}
+  \vspace*{10pt}\newline
+  \par\noindent\hfill
+  \makebox[10cm][r]{作者签名：{\hspace{2.5cm}} 指导教师签名：{\hspace{1.5cm}}}
+  \par\noindent\hfill
+  \makebox[10cm][r]{日\hspace{2em}期： \hspace{2.5cm} 年\qquad 月\qquad 日\hspace{1.5cm}}\par}
 
-  \vspace*{140pt}
+  \vspace*{100pt}
   \begin{center}{\ziju{0.5}\heiti \zihao{-2} 版权使用授权书}\end{center}
   \par\vspace*{20pt}
   \setlength{\baselineskip}{23pt}
   {\zihao{4}
   本人完全了解武汉大学有权保留并向有关部门或机构送交本论文（设计）的复印件和电子版，允许本论文（设计）被查阅和借阅。本人授权武汉大学将本论文的全部或部分内容编入有关数据进行检索和传播，可以采用影印、缩印或扫描等复制手段保存和汇编本论文（设计）。
-  \vspace*{30pt}\newline
-  作者签名: \underline{\hspace{2.5cm}}
-  \hspace{0.6cm}指导教师签名: \underline{\hspace{2.5cm}}
-  \hspace{0.6cm}日期: \underline{\hspace{2.5cm}}\hfill\par}
+  \vspace*{10pt}\newline
+  \par\noindent\hfill
+  \makebox[10cm][r]{作者签名：{\hspace{2.5cm}} 指导教师签名：{\hspace{1.5cm}}}
+  \par\noindent\hfill
+  \makebox[10cm][r]{日\hspace{2em}期： \hspace{2.5cm} 年\qquad 月\qquad 日\hspace{1.5cm}}\par}
 }
 
 %%% ---- 摘要 ----- %%%
@@ -318,4 +320,3 @@
 	\par\noindent {\bfseries\zihao{-4} Keywords:} \enkeyword
 	\clearpage
 }
-
