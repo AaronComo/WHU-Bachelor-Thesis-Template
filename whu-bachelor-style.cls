@@ -199,17 +199,23 @@
 
 
 %%% ---- 参考文献设置 ----- %%%
-\RequirePackage[sort&compress]{natbib}
-\setcitestyle{numbers,square,comma}
 \ctexset{bibname={参考文献}}
-\RequirePackage{gbt7714}
+\RequirePackage[sort&compress]{gbt7714}
 \bibliographystyle{gbt7714-numerical}
 
 
 \RequirePackage{hyperref} % 引用
 \hypersetup{citecolor=magenta,linkcolor=black,urlcolor=blue} % 设置引用链接颜色
 
-\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}} % 自定义新命令\upcite, 使参考文献引用以上标出现
+\makeatletter   % 为了支持恶心的gbt7714标准，要搞成这个样子才能保留国际标准
+\newcommand{\rawcite}[1]{%
+  \begingroup
+  \let\@cite\@rawcite
+  \cite{#1}%
+  \endgroup
+}
+\newcommand{\@rawcite}[2]{[#1]}
+\makeatother
 
 \renewcommand{\eqref}[1]{\textup{{\normalfont（\ref{#1}）\normalfont}}} % 公式引用使用中文括号
 
