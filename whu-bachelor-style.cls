@@ -100,8 +100,8 @@
 \def\makecontents{
     % ------- 目录部分 -------
     \hypersetup{pdfborder={0 0 0}}    % 去掉目录红框
-    \pagenumbering{Roman}
-    \setcounter{page}{1}
+    % \pagenumbering{Roman}
+    % \setcounter{page}{1}
     \tableofcontents
     
     \cleardoublepage
