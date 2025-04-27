@@ -12,6 +12,7 @@
 
 % \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{whu-bachelor-style}[Wuhan University Thesis Template for Bachelor Degree]
+
 %%% ---- 载入Class ----- %%%
 \LoadClass[a4paper,openany,oneside]{book} % A4大小，book布局
 \PassOptionsToPackage{quiet}{fontspec}
@@ -198,9 +199,12 @@
 
 
 %%% ---- 参考文献设置 ----- %%%
-\RequirePackage[sort&compress]{gbt7714}
+\RequirePackage[sort&compress]{natbib}
+\setcitestyle{numbers,square,comma}
 \ctexset{bibname={参考文献}}
+\RequirePackage{gbt7714}
 \bibliographystyle{gbt7714-numerical}
+
 
 \RequirePackage{hyperref} % 引用
 \hypersetup{citecolor=magenta,linkcolor=black,urlcolor=blue} % 设置引用链接颜色
