@@ -110,7 +110,7 @@
 
     \renewcommand{\baselinestretch}{1}\normalsize
     \baselineskip=23pt                % 正文行距为 23 磅
-    \hypersetup{pdfborder={0 0 1}}    % 恢复引用红框
+    % \hypersetup{pdfborder={0 0 1}}    % 恢复引用红框
 }
 
 
@@ -200,22 +200,25 @@
 
 %%% ---- 参考文献设置 ----- %%%
 \ctexset{bibname={参考文献}}
+\RequirePackage{natbib}
 \RequirePackage[sort&compress]{gbt7714}
 \bibliographystyle{gbt7714-numerical}
 
 
+
 \RequirePackage{hyperref} % 引用
-\hypersetup{citecolor=magenta,linkcolor=black,urlcolor=blue} % 设置引用链接颜色
+% \hypersetup{citecolor=magenta,linkcolor=black,urlcolor=blue} % 设置引用链接颜色
 
 \makeatletter   % 为了支持恶心的gbt7714标准，要搞成这个样子才能保留国际标准
 \newcommand{\rawcite}[1]{%
   \begingroup
-  \let\@cite\@rawcite
-  \cite{#1}%
+    \setcitestyle{numbers,square,comma}
+    \cite{#1}%
+    \setcitestyle{}
   \endgroup
 }
-\newcommand{\@rawcite}[2]{[#1]}
 \makeatother
+
 
 \renewcommand{\eqref}[1]{\textup{{\normalfont（\ref{#1}）\normalfont}}} % 公式引用使用中文括号
 
