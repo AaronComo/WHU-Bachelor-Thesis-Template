@@ -5,7 +5,7 @@
 %% Fing: v0.1, 2019/03/18
 %%
 %% Modified by AaronComo @ WHU
-%% AaronComo: v2.2, 2025/04/23
+%% AaronComo: v3.2, 2025/05/5
 %%
 %% This project uses the MIT License, see LICENSE for more details.
 %% ----------------------------------------------------------------------
@@ -59,7 +59,7 @@
 \renewcommand{\baselinestretch}{1.5}
 % 设置各个标题样式
 \ctexset{chapter={format={\centering \heiti \zihao{-2}}, number={   % 各章标题 黑体小2号 // 修改：标题和数字字号一致 
-    \arabic{chapter}},name={,},afterskip={0.5ex},beforeskip={0.8ex}}}
+    \arabic{chapter}},name={,},afterskip={0.5em},beforeskip={0.8em}}}
 \ctexset{section={format={\raggedright \heiti \zihao{4}}}}          % 一级标题 黑体 4号
 \ctexset{subsection={format={\raggedright \heiti \zihao{-4}}}}      % 二级标题 黑体小4号
 \ctexset{subsubsection={format={\raggedright \heiti \zihao{-4}}}}   % 三级标题 黑体小4号
