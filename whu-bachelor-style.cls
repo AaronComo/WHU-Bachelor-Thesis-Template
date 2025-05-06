@@ -80,14 +80,14 @@
 \renewcommand{\cftdotsep}{1}  % 点间距
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 
-\renewcommand\cftchapfont{\heiti\zihao{4}} % 目录章标题 黑体 4 号
+\renewcommand\cftchapfont{\bfseries\songti\zihao{4}} % 目录章标题 黑体 4 号
 \renewcommand\cftsecfont{\songti\zihao{-4}}
 \renewcommand\cftsubsecfont{\songti\zihao{-4}}
 \renewcommand\cftsubsubsecfont{\songti\zihao{-4}}
-\renewcommand\cftchappagefont{\heiti\zihao{5}} % 目录页码字体
-\renewcommand\cftsecpagefont{\songti\zihao{5}}
-\renewcommand\cftsubsecpagefont{\songti\zihao{5}}
-\renewcommand\cftsubsubsecpagefont{\songti\zihao{5}}
+\renewcommand\cftchappagefont{\bfseries\songti\zihao{-4}} % 目录页码字体
+\renewcommand\cftsecpagefont{\songti\zihao{-4}}
+\renewcommand\cftsubsecpagefont{\songti\zihao{-4}}
+\renewcommand\cftsubsubsecpagefont{\songti\zihao{-4}}
 
 \renewcommand\cftchapafterpnum{\vskip5pt}
 \renewcommand\cftsecafterpnum{\vskip3pt}
