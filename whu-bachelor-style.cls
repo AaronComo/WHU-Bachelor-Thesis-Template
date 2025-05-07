@@ -5,7 +5,7 @@
 %% Fing: v0.1, 2019/03/18
 %%
 %% Modified by AaronComo @ WHU
-%% AaronComo: v3.2, 2025/05/5
+%% AaronComo: v3.4, 2025/05/06
 %%
 %% This project uses the MIT License, see LICENSE for more details.
 %% ----------------------------------------------------------------------
@@ -22,17 +22,17 @@
 
 %%% ---- 定义页边距 ----- %%%
 \RequirePackage{geometry}
-\geometry{left=2.6cm,right=2.6cm,top=3cm,bottom=3cm,includefoot,xetex}
+\geometry{left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm,includefoot,xetex}
 \setlength{\headheight}{18.5pt}
 
 \RequirePackage{fancyhdr}             % 页眉页脚宏包
-\renewcommand{\headrulewidth}{0.2pt}  % 页眉线宽
+\renewcommand{\headrulewidth}{0.5pt}  % 页眉线宽
 \renewcommand{\footrulewidth}{0pt}    % 页脚线宽
 
 
 % 页眉线淡化
 \renewcommand{\headrule}{
-  \color{gray!90}
+  \color{gray}
   \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth
 }
 
@@ -40,7 +40,7 @@
 % 页眉页脚样式
 \fancypagestyle{plain}{
     \fancyhf{}
-    \fancyhead[C]{\vspace{4pt}\textcolor{gray!70}{\zihao{5}武汉大学本科毕业论文（设计）}}
+    \fancyhead[C]{\vspace{4pt}\textcolor{gray}{\zihao{5}武汉大学本科毕业论文（设计）}}
     \fancyfoot[C]{\zihao{5}\thepage}
 }
 
@@ -48,7 +48,7 @@
 % 含有页眉但无页码的样式
 \fancypagestyle{noPageNum}{
     \fancyhf{} 
-    \fancyhead[C]{\vspace{4pt}\textcolor{gray!70}{\zihao{5}武汉大学本科毕业论文（设计）}}
+    \fancyhead[C]{\vspace{4pt}\textcolor{gray}{\zihao{5}武汉大学本科毕业论文（设计）}}
 }
 
 \pagestyle{plain}
@@ -59,7 +59,7 @@
 \renewcommand{\baselinestretch}{1.5}
 % 设置各个标题样式
 \ctexset{chapter={format={\centering \heiti \zihao{-2}}, number={   % 各章标题 黑体小2号 // 修改：标题和数字字号一致 
-    \arabic{chapter}},name={,},afterskip={0.5em},beforeskip={0.8em}}}
+    \arabic{chapter}},name={,},afterskip={1em},beforeskip={0em}}}
 \ctexset{section={format={\raggedright \heiti \zihao{4}}}}          % 一级标题 黑体 4号
 \ctexset{subsection={format={\raggedright \heiti \zihao{-4}}}}      % 二级标题 黑体小4号
 \ctexset{subsubsection={format={\raggedright \heiti \zihao{-4}}}}   % 三级标题 黑体小4号
@@ -80,11 +80,11 @@
 \renewcommand{\cftdotsep}{1}  % 点间距
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 
-\renewcommand\cftchapfont{\bfseries\songti\zihao{4}} % 目录章标题 黑体 4 号
+\renewcommand\cftchapfont{\bfseries\fangsong\zihao{4}} % 目录章标题 黑体 4 号
 \renewcommand\cftsecfont{\songti\zihao{-4}}
 \renewcommand\cftsubsecfont{\songti\zihao{-4}}
 \renewcommand\cftsubsubsecfont{\songti\zihao{-4}}
-\renewcommand\cftchappagefont{\bfseries\songti\zihao{-4}} % 目录页码字体
+\renewcommand\cftchappagefont{\bfseries\fangsong\zihao{-4}} % 目录页码字体
 \renewcommand\cftsecpagefont{\songti\zihao{-4}}
 \renewcommand\cftsubsecpagefont{\songti\zihao{-4}}
 \renewcommand\cftsubsubsecpagefont{\songti\zihao{-4}}
@@ -99,9 +99,6 @@
 % 生成目录
 \def\makecontents{
     % ------- 目录部分 -------
-    \hypersetup{pdfborder={0 0 0}}    % 去掉目录红框
-    % \pagenumbering{Roman}
-    % \setcounter{page}{1}
     \tableofcontents
     
     \cleardoublepage
@@ -110,7 +107,6 @@
 
     \renewcommand{\baselinestretch}{1}\normalsize
     \baselineskip=23pt                % 正文行距为 23 磅
-    % \hypersetup{pdfborder={0 0 1}}    % 恢复引用红框
 }
 
 
@@ -129,6 +125,9 @@
 
 \RequirePackage{longtable}  % 做长表格的包
 \RequirePackage{booktabs}   % 做三线表的包
+\RequirePackage{etoolbox}   % 用于修改表格的包
+\AtBeginEnvironment{tabular}{\zihao{5}} % 表格字体大小 5 号
+\AtBeginEnvironment{tabularx}{\zihao{5}}
 
 % 列表样式
 \RequirePackage{enumerate, enumitem}
@@ -156,7 +155,8 @@
 \RequirePackage[amsmath,thmmarks]{ntheorem}  % 定理
 \RequirePackage{graphicx, subcaption}
 \RequirePackage{listings}                    % 代码段
-\RequirePackage{algorithm2e, algorithmic}    % 算法代码
+\RequirePackage{algorithmic}                 % 算法代码
+\RequirePackage[ruled,linesnumbered,vlined]{algorithm2e}
 \RequirePackage{tikz, pgfplots}              % 绘图
 \pgfplotsset{compat=1.8}
 \RequirePackage{fontspec, color, url, array}
@@ -181,7 +181,6 @@
 \theorempreskip{0pt}
 \theorempostskip{0pt}
 \theoremnumbering{arabic}
-%\theoremsymbol{} %定理结束时自动添加的标志
 \newtheorem{theorem}{\hspace{2em}定理}[section]
 \newtheorem{definition}{\hspace{2em}定义}[section]
 \newtheorem{lemma}{\hspace{2em}引理}[section]
@@ -206,8 +205,7 @@
 
 
 
-\RequirePackage{hyperref} % 引用
-% \hypersetup{citecolor=magenta,linkcolor=black,urlcolor=blue} % 设置引用链接颜色
+\RequirePackage[hidelinks]{hyperref} % 引用
 
 \makeatletter   % 为了支持恶心的gbt7714标准，要搞成这个样子才能保留国际标准
 \newcommand{\rawcite}[1]{%
@@ -251,25 +249,25 @@
   \thispagestyle{empty}
   \begin{center}
     \begin{figure}
-        \vspace{3em}
+        \vspace{6em}
         \centering
-        \includegraphics[width=0.3\linewidth]{figures/whulogo.png}
+        \includegraphics[width=0.35\linewidth]{figures/whulogo.pdf}
     \end{figure}
     \par \vspace*{1em}
-    {\songti \zihao{1} 本科毕业论文（设计）}
-    \par \vspace{4em}
+    {\fangsong \zihao{2} \bfseries{本科毕业论文（设计）}}
+    \par \vspace{3em}
     \begin{minipage}[c][6cm]{\textwidth}
         \setlength{\baselineskip}{32pt} 
         \centering {\kaishu \zihao{1} \@ctitle}
     \end{minipage}
-    \par \vspace{4em}
-    {\songti \zihao{4}
+    \par \vspace{3em}
+    {\songti 
       \begin{tabular}{cc}
-        \makebox[3.59cm][l]{姓\hspace{2em}名\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cauthor} \\[1ex]
-        \makebox[3.59cm][l]{学\hspace{2em}号\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cnumber}    \\[1ex]
-        \makebox[3.59cm][l]{专\hspace{2em}业\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cmajor}    \\[1ex]
-        \makebox[3.59cm][l]{学\hspace{2em}院\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cschool}   \\[1ex]
-        \makebox[3.59cm][l]{指导教师\hspace{1ex}：}                                 & \makebox[3.59cm][c]{\@cadvisor}  \\[1ex]
+        \zihao{4}\makebox[3.59cm][l]{姓\hspace{2em}名\hspace{1ex}：} & \zihao{4}\makebox[3.59cm][c]{\@cauthor}   \\[1.5ex]
+        \zihao{4}\makebox[3.59cm][l]{学\hspace{2em}号\hspace{1ex}：} & \zihao{4}\makebox[3.59cm][c]{\@cnumber}   \\[1.5ex]
+        \zihao{4}\makebox[3.59cm][l]{专\hspace{2em}业\hspace{1ex}：} & \zihao{4}\makebox[3.59cm][c]{\@cmajor}    \\[1.5ex]
+        \zihao{4}\makebox[3.59cm][l]{学\hspace{2em}院\hspace{1ex}：} & \zihao{4}\makebox[3.59cm][c]{\@cschool}   \\[1.5ex]
+        \zihao{4}\makebox[3.59cm][l]{指导教师\hspace{1ex}：}          & \zihao{4}\makebox[3.59cm][c]{\@cadvisor}  \\[1.5ex]
       \end{tabular}}
     \par \vfill
     {\songti \zihao{4} \@cdate}
@@ -280,29 +278,30 @@
 % 论文申明页
 \def\makestatement{
   \thispagestyle{empty}
-  % \vspace*{40pt}
-  \begin{center}{\ziju{0.5}\heiti \zihao{-2} 原创性声明}\end{center}
+  \vspace*{\fill} % 顶部填充
+  \begin{center}{\heiti \zihao{-2} 原创性声明}\end{center}
   \par\vspace*{20pt}
   \setlength{\baselineskip}{23pt}
-  {\zihao{4}
+  {\zihao{-4}
   本人郑重声明：所呈交的论文（设计），是本人在指导教师的指导下，严格按照学校和学院有关规定完成的。除文中已经标明引用的内容外，本论文（设计）不包含任何其他个人或集体已发表及撰写的研究成果。对本论文（设计）做出贡献的个人和集体，均已在文中以明确方式标明。本人承诺在论文（设计）工作过程中没有伪造数据等行为。若在本论文（设计）中有侵犯任何方面知识产权的行为，由本人承担相应的法律责任。
-  \vspace*{10pt}\newline
+  \vspace*{30pt}\newline
   \par\noindent\hfill
-  \makebox[10cm][r]{作者签名：{\hspace{2.5cm}} 指导教师签名：{\hspace{1.5cm}}}
+  \makebox[10cm][r]{作者签名：{\hspace{2.5cm}} 指导教师签名：{\hspace{2cm}}}
   \par\noindent\hfill
-  \makebox[10cm][r]{日\hspace{2em}期： \hspace{2.5cm} 年\qquad 月\qquad 日\hspace{1.5cm}}\par}
+  \makebox[10cm][r]{日\hspace{2em}期： \hspace{2.5cm} 年\qquad 月\qquad 日\hspace{2cm}}\par}
 
   \vspace*{100pt}
-  \begin{center}{\ziju{0.5}\heiti \zihao{-2} 版权使用授权书}\end{center}
+  \begin{center}{\heiti \zihao{-2} 版权使用授权书}\end{center}
   \par\vspace*{20pt}
   \setlength{\baselineskip}{23pt}
-  {\zihao{4}
+  {\zihao{-4}
   本人完全了解武汉大学有权保留并向有关部门或机构送交本论文（设计）的复印件和电子版，允许本论文（设计）被查阅和借阅。本人授权武汉大学将本论文的全部或部分内容编入有关数据进行检索和传播，可以采用影印、缩印或扫描等复制手段保存和汇编本论文（设计）。
-  \vspace*{10pt}\newline
+  \vspace*{30pt}\newline
   \par\noindent\hfill
-  \makebox[10cm][r]{作者签名：{\hspace{2.5cm}} 指导教师签名：{\hspace{1.5cm}}}
+  \makebox[10cm][r]{作者签名：{\hspace{2.5cm}} 指导教师签名：{\hspace{2cm}}}
   \par\noindent\hfill
-  \makebox[10cm][r]{日\hspace{2em}期： \hspace{2.5cm} 年\qquad 月\qquad 日\hspace{1.5cm}}\par}
+  \makebox[10cm][r]{日\hspace{2em}期： \hspace{2.5cm} 年\qquad 月\qquad 日\hspace{2cm}}\par}
+  \vspace*{\fill} % 顶部填充
 }
 
 %%% ---- 摘要 ----- %%%
@@ -310,8 +309,7 @@
 \newenvironment{cnabstract}[1]{
 	\def \cnkeyword {#1}
 	\clearpage
-    % \thispagestyle{noPageNum}
-    \begin{center} {\vspace*{0.5em}\heiti \zihao{-2} 摘 \hspace{2em} 要} \end{center}
+    \begin{center} {\vspace*{0.5em} \heiti \zihao{-2} 摘 \hspace{2em} 要} \end{center}
     \baselineskip=23pt
 }{
 	\vspace*{2em}
@@ -323,8 +321,7 @@
 \newenvironment{enabstract}[1]{
     \def \enkeyword {#1}
     \clearpage
-    % \thispagestyle{noPageNum}
-    \begin{center} {\vspace*{0.5em}\heiti \zihao{-2} \textbf{ABSTRACT}} \end{center}
+    \begin{center} {\vspace*{0.5em} \heiti \zihao{-2} \textbf{ABSTRACT}} \end{center}
     \baselineskip=23pt
 }{
 	\vspace*{2em}
