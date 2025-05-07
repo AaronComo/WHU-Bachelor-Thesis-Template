@@ -5,7 +5,7 @@
 %% Fing: v0.1, 2019/03/18
 %%
 %% Modified by AaronComo @ WHU
-%% AaronComo: v3.4, 2025/05/06
+%% AaronComo: v4.0 Final Release, 2025/05/07
 %%
 %% This project uses the MIT License, see LICENSE for more details.
 %% ----------------------------------------------------------------------
